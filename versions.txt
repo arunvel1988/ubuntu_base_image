@@ -1,0 +1,6 @@
+export base_url=https://wiki.ubuntu.com/Releases/
+export download_url=http://cdimage.ubuntu.com/ubuntu-base/releases
+export version=`curl $base_url | grep LTS | sed 's/.*">//'|grep Ubuntu | sed 's%</.*%%' | head -1 | awk {'print $2'} |sed 's/<.*>//'`
+export tarfile_name=ubuntu-base-$version-base-amd64.tar.gz
+export tarfile_loc=$download_url/$version/release/$tarfile_name
+curl $tarfile_loc --output $tarfile_name
